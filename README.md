@@ -1,6 +1,11 @@
+
 # Winter Simon — Personal Site
 
-基于 **Astro** 的个人学术主页 + 数字花园 + 项目作品集起始框架。
+**Personal Website · Physics, Research & Projects**
+
+🌐 **[访问我的个人网站](https://winter-simon.github.io/)**
+
+个人学术主页、物理学习笔记、知识花园与软件项目作品集。
 
 ## 页面
 
