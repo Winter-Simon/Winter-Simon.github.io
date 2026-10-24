@@ -1,0 +1,22 @@
+{
+  "name": "winter-simon-personal-site",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "astro": "^5.15.0",
+    "remark-math": "^6.0.0",
+    "rehype-katex": "^7.0.1",
+    "katex": "^0.16.22"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "typescript": "^5.9.2"
+  }
+}

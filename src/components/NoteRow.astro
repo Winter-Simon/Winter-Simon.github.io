@@ -1,0 +1,14 @@
+---
+import { href } from '../lib/paths';
+interface Props { id: string; title: string; summary: string; topic: string; stage: string; date: Date }
+const { id, title, summary, topic, stage, date } = Astro.props;
+const dateText = date.toISOString().slice(0, 10);
+---
+<a class="note-row" href={href(`/notes/${id}/`)}>
+  <div class="note-row-content">
+    <div class="note-meta"><span>{topic}</span><span class="separator">/</span><span>{stage}</span></div>
+    <h3>{title}</h3>
+    <p>{summary}</p>
+  </div>
+  <div class="note-row-end"><time datetime={dateText}>{dateText}</time><span aria-hidden="true">↗</span></div>
+</a>

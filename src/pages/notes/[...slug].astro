@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+import { href } from '../../lib/paths';
+export async function getStaticPaths() {
+  const entries = await getCollection('notes');
+  return entries.map(entry => ({ params: { slug: entry.id }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const updated = entry.data.updated.toISOString().slice(0,10);
+---
+<BaseLayout title={entry.data.title} description={entry.data.summary} active="notes">
+  <div class="shell article-shell"><a class="back-link" href={href('/notes/')}>← 返回知识花园</a>
+    <header class="article-header"><div class="article-meta"><span>{entry.data.topic}</span><span>·</span><span>{entry.data.stage}</span><span>·</span><time datetime={updated}>{updated}</time></div><h1>{entry.data.title}</h1><p>{entry.data.summary}</p></header>
+    <article class="prose"><Content /></article>
+    <div class="article-end"><span>END OF NOTE — 可以继续修订</span><a href={href('/notes/')}>更多笔记 ↗</a></div>
+  </div>
+</BaseLayout>

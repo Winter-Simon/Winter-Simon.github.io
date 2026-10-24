@@ -1,0 +1,26 @@
+---
+import { href } from '../lib/paths';
+interface Props { active?: 'home' | 'notes' | 'projects' | 'about' }
+const { active = 'home' } = Astro.props;
+const links = [
+  { name: '首页', path: '/', key: 'home' },
+  { name: '知识花园', path: '/notes/', key: 'notes' },
+  { name: '项目', path: '/projects/', key: 'projects' },
+  { name: '关于', path: '/about/', key: 'about' },
+];
+---
+<header class="site-header">
+  <div class="shell header-inner">
+    <a class="wordmark" href={href('/')} aria-label="Winter Simon，返回首页">
+      <span class="wordmark-symbol" aria-hidden="true">✳</span>
+      <span>Winter Simon<span class="wordmark-dot">.</span></span>
+    </a>
+    <nav class="main-nav" aria-label="主导航">
+      {links.map((link) => (
+        <a href={href(link.path)} aria-current={active === link.key ? 'page' : undefined}>
+          {link.name}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>

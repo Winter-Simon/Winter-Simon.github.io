@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NoteRow from '../../components/NoteRow.astro';
+import { getCollection } from 'astro:content';
+const notes = (await getCollection('notes')).sort((a,b)=>a.data.order-b.data.order);
+const topics = [...new Set(notes.map(note => note.data.topic))];
+---
+<BaseLayout title="知识花园" description="研究性笔记、物理概念与不断发展的理解。" active="notes">
+  <section class="shell page-intro"><span class="eyebrow eyebrow-simple">THE KNOWLEDGE GARDEN / 01</span><h1>知识花园<span>。</span></h1><p>不是按日期归档的博客，而是一组可以持续生长的想法。笔记保留探索痕迹，允许修订，也允许暂时不完整。</p></section>
+  <section class="shell garden-layout">
+    <aside class="garden-sidebar"><div class="sidebar-label">INDEX / SUBJECTS</div><div class="subject-list">{topics.map(topic => <span>{topic}</span>)}</div><div class="sidebar-note">状态说明<br /><b>探索中</b> — 初步理解<br /><b>整理中</b> — 逐步成型<br /><b>相对成熟</b> — 持续修订</div></aside>
+    <div class="garden-main"><div class="list-heading"><span>ALL NOTES</span><span>{String(notes.length).padStart(2,'0')} ENTRIES</span></div><div class="notes-list">{notes.map(note => <NoteRow id={note.id} title={note.data.title} summary={note.data.summary} topic={note.data.topic} stage={note.data.stage} date={note.data.updated} />)}</div><p class="notes-footnote">示例内容仅用于展示结构；可直接替换为经筛选的 Obsidian Markdown。</p></div>
+  </section>
+</BaseLayout>

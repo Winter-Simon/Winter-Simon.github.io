@@ -1,0 +1,37 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+import 'katex/dist/katex.min.css';
+import { href } from '../lib/paths';
+interface Props {
+  title: string;
+  description?: string;
+  active?: 'home' | 'notes' | 'projects' | 'about';
+}
+const { title, description = '物理学习、知识花园与独立软件作品。', active = 'home' } = Astro.props;
+const fullTitle = title === '首页' ? 'Winter Simon — 研究、思考与创造' : `${title} · Winter Simon`;
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+---
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f6f2" />
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(href('/og.svg'), Astro.site).toString()} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href={href('/favicon.svg')} />
+    <title>{fullTitle}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+    <Header active={active} />
+    <main id="main"><slot /></main>
+    <Footer />
+  </body>
+</html>

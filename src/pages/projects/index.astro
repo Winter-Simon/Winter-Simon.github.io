@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { projects } from '../../data/projects';
+---
+<BaseLayout title="项目" description="独立软件、物理可视化与持续进行的实验。" active="projects">
+  <section class="shell page-intro"><span class="eyebrow eyebrow-simple">SELECTED PROJECTS / 02</span><h1>项目与作品<span>。</span></h1><p>记录已实现的工具，也记录尚在构思中的实验。每个项目都关注同一个问题：如何让复杂的事情变得更清晰。</p></section>
+  <section class="shell page-grid"><div class="project-grid">{projects.map(project => <ProjectCard project={project}/>)}</div></section>
+</BaseLayout>

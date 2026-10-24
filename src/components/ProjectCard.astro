@@ -1,0 +1,21 @@
+---
+import type { Project } from '../data/projects';
+import { href } from '../lib/paths';
+interface Props { project: Project }
+const { project } = Astro.props;
+---
+<a class="project-card" href={href(project.href)}>
+  <div class={`project-art art-${project.art}`} aria-hidden="true">
+    {project.art === 'workspace' ? (
+      <div class="mock-app"><div class="mock-sidebar"><i></i><i></i><i></i><i></i></div><div class="mock-main"><b></b><div><i></i><i></i></div><div><i></i><i></i></div><div><i></i><i></i></div></div></div>
+    ) : (
+      <div class="atom-visual"><span class="atom-core"></span><i></i><i></i><i></i></div>
+    )}
+    <span class="art-index">{project.eyebrow}</span>
+  </div>
+  <div class="project-content">
+    <div class="project-heading"><h3>{project.title}</h3><span class="project-arrow" aria-hidden="true">↗</span></div>
+    <p>{project.description}</p>
+    <div class="project-bottom"><span>{project.category}</span><em>{project.status}</em></div>
+  </div>
+</a>

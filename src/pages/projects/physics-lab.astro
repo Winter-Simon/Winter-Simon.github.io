@@ -1,0 +1,7 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { href } from '../../lib/paths';
+---
+<BaseLayout title="Interactive Physics Lab" description="交互物理实验室的早期构想。" active="projects">
+  <section class="shell case-shell"><a class="back-link" href={href('/projects/')}>← 返回项目</a><header class="case-header"><div class="article-meta"><span>EXPLORATION / 002</span><span>·</span><span>研究构想</span></div><h1>Interactive<br />Physics Lab<span>.</span></h1><p>让抽象的数学结构，逐步成为可以操作的直观实验。</p><div class="case-tags"><span>Quantum Mechanics</span><span>Interactive Visualization</span><span>Planned</span></div></header><div class="physics-feature" aria-hidden="true"><div class="physics-rings"><i></i><i></i><i></i><span></span></div><p>STATE SPACE / SYMMETRY / BASIS</p></div><div class="case-body"><div class="case-side"><span>PROPOSED EXPERIMENTS</span><h2>从基变换<br />开始。</h2></div><div class="case-copy"><p>这是一个尚未实现的计划，未来可以用来放置小型物理模拟与可视化实验，先从有限维厄米算符的对角化与对易算符分块开始。</p><ul><li>拖动矩阵参数，观察本征基变化</li><li>展示哈密顿量的不变子空间</li><li>逐步扩展到球谐函数与中心势问题</li></ul><p>当前页面仅是作品架构占位，不代表这些功能已经完成。</p></div></div></section>
+</BaseLayout>
